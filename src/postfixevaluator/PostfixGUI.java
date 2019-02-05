@@ -160,5 +160,8 @@ public class PostfixGUI extends JFrame {
                 new PostfixGUI().setVisible(true);
             }
         });
+        
+        Operator add = new AddOperator();
+        System.out.println("prec: " + add.getPrecedence());
     }
 }
