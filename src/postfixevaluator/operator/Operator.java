@@ -1,15 +1,10 @@
-/*
- * Matthew Towles
- * Feb 4, 2019
- * Abstract class for arithmetic operators
- */
-
-package postfixevaluator;
+package postfixevaluator.operator;
 
 /**
- * Abstract Operator class
+ * Abstract Operator class for arithmetic operators
  * Extended by AddOp, SubOp, MulOp, DivOp
  * @author matthew.towles
+ * @date Feb 4, 2019
  */
 abstract public class Operator {
     
@@ -29,7 +24,6 @@ abstract public class Operator {
     public static final String SUB_SYMBOL = "-";
     public static final String MUL_SYMBOL = "*";
     public static final String DIV_SYMBOL = "/";
-    
     
     
     /**

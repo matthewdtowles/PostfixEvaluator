@@ -1,16 +1,23 @@
-/*
- * Matthew Towles
- * Feb 4, 2019
- * 
- */
-
 package postfixevaluator;
 
 /**
- *
- * @author matthew.towles
+ * Expression Tree
+ * Takes an expression as input (a string or an actual expression? or an array of tokens!???)
+ * Numbers become operandNodes - push to numStack
+ * Operators become operatorNodes - push to opStack
+ * 
+ * @author Matthew Towles
+ * Feb 4, 2019
  */
 public class ExpressionTree {
+    
+    /*
+    private Stack<OperatorNode> opStack;
+    private Stack<OperandNode> numStack;
+    
+    
+    */
+    
     /*
     given input'
     build an expression tree

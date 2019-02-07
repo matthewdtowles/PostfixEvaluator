@@ -1,14 +1,12 @@
-/*
- * Matthew Towles
- * Feb 4, 2019
- * Node with an Operator as data/value
- */
+package postfixevaluator.node;
 
-package postfixevaluator;
+import postfixevaluator.operator.Operator;
 
 /**
- *
+ * OperatorNode
+ * Node with an Operator as data/value
  * @author matthew.towles
+ * @date Feb 4, 2019
  */
 public class OperatorNode implements Node {
 
@@ -41,8 +39,12 @@ public class OperatorNode implements Node {
     }
     
     
-    
-    
+    /**
+     * Evaluates data in this Node
+     * Base case: left, right are leaf nodes (have no children)
+     * operator.evaluate is arithmetic operation on leftVal and rightVal
+     * @return 
+     */
     @Override
     public double evaluate() {
         double leftVal = left.evaluate();
@@ -50,19 +52,28 @@ public class OperatorNode implements Node {
         return operator.evaluate(leftVal, rightVal);
     }
 
-    @Override
-    public String preOrderWalk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
+    /**
+     * Returns Node subtree in infix format
+     * @return String - (leftVal operator rightVal)
+     */
     @Override
     public String inOrderWalk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String leftVal = left.inOrderWalk();
+        String rightVal = right.inOrderWalk();
+        return "(" + leftVal + " " + operator + " " + rightVal + ")";
     }
 
+    
+    /**
+     * Returns Node subtree in postfix format
+     * @return String - leftVal rightVal operator
+     */
     @Override
     public String postOrderWalk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String leftVal = left.postOrderWalk();
+        String rightVal = right.postOrderWalk();
+        return leftVal + " " + rightVal + " " + operator;
     }
 
 }

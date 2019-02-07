@@ -1,16 +1,12 @@
-/*
- * Matthew Towles
- * Feb 4, 2019
- * AddOperator 
- */
-
-package postfixevaluator;
+package postfixevaluator.operator;
 
 /**
- * AddOperator
+ * Division Operator
+ * 
  * @author matthew.towles
+ * @date Feb 4, 2019
  */
-public class AddOperator extends Operator {
+public class DivOperator extends Operator {
 
     private int precedence;
     private String symbol;
@@ -19,20 +15,21 @@ public class AddOperator extends Operator {
     /**
      * Constructor
      */
-    public AddOperator() {
-        this.precedence = ADD_PRECEDENCE;
-        this.symbol = ADD_SYMBOL;
+    public DivOperator() {
+        this.precedence = DIV_PRECEDENCE;
+        this.symbol = DIV_SYMBOL;
     }
     
     
     /**
+     * Returns a divided by b (in that order)
      * @param a
      * @param b
-     * @return - sum of a + b
+     * @return - quotient of (a/b) 
      */
     @Override
     public double evaluate(double a, double b) {
-        return a + b;
+        return a / b;
     }
 
     

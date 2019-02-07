@@ -1,13 +1,10 @@
-/*
- * Matthew Towles
- * Feb 4, 2019
- * Four methods which must be implemented by all node types
- */
-package postfixevaluator;
+package postfixevaluator.node;
 
 /**
  * Methods all types of nodes must implement
+ * 
  * @author matthew.towles
+ * @date Feb 4, 2019
  */
 public interface Node {
     
@@ -16,14 +13,7 @@ public interface Node {
      * @return double - data inside of node
      */
     public double evaluate();
-    
-    
-    /**
-     * Walk along node data:  op - left - right
-     * @return String - data in op, left, right order
-     */
-    public String preOrderWalk();
-    
+      
     
     /**
      * Walk along node data:  left - op - right

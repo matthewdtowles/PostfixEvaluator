@@ -1,10 +1,4 @@
-/*
- * Matthew Towles
- * Feb 4, 2019
- * Node with an operand as value
- */
-
-package postfixevaluator;
+package postfixevaluator.node;
 
 /**
  * OperandNode is a node with an operand value
@@ -12,6 +6,7 @@ package postfixevaluator;
  * expression tree
  * 
  * @author matthew.towles
+ * @date Feb 4, 2019
  */
 public class OperandNode implements Node {
 
@@ -28,22 +23,11 @@ public class OperandNode implements Node {
     
     
     /**
-     * @return double - this.value
+     * @return this.value
      */
     @Override
     public double evaluate() {
         return value;
-    }
-
-    
-    /**
-     * Implemented from Node
-     * Same as inOrderWalk and postOrderWalk
-     * @return String - value in string form
-     */
-    @Override
-    public String preOrderWalk() {
-        return String.valueOf(value);
     }
 
     

@@ -1,6 +1,21 @@
-/*
- * Matthew Towles
- * Feb 4, 2019
+package postfixevaluator;
+
+import postfixevaluator.operator.AddOperator;
+import postfixevaluator.operator.Operator;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+import postfixevaluator.expression.PostfixExpression;
+
+/**
+ * GUI and main class for Postfix Evaluator
  * Accepts arithmetic of unsigned integers
  * in postfix notation and builds expression tree.
  * From expression tree, an infix expression is
@@ -12,23 +27,8 @@
  *                   Sub R1 3 R0
  *                   Mul R2 2 3
  *                   Div R3 R1 R2
- */
-package postfixevaluator;
-
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.WindowConstants;
-
-/**
- * GUI and main class for Postfix Evaluator
  * @author matthew.towles
+ * @date Feb 4, 2019
  */
 public class PostfixGUI extends JFrame {
     
@@ -146,6 +146,15 @@ public class PostfixGUI extends JFrame {
      */
     private void submitButtonActionPerformed(ActionEvent ev) {
         // build tree or whatever happens when you click the button
+        String input = inputField.getText();
+        
+        String[] equation = input.split(" ");
+        
+        PostfixExpression pe = new PostfixExpression(equation);
+        
+        String output = pe.toString();
+        
+        this.resultText.setText(output);
     }
     
     
