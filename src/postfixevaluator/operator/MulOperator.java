@@ -27,7 +27,7 @@ public class MulOperator extends Operator {
      * @return - product of a*b 
      */
     @Override
-    public double evaluate(double a, double b) {
+    public int evaluate(int a, int b) {
         return a * b;
     }
 

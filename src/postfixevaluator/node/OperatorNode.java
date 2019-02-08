@@ -46,9 +46,9 @@ public class OperatorNode implements Node {
      * @return 
      */
     @Override
-    public double evaluate() {
-        double leftVal = left.evaluate();
-        double rightVal = right.evaluate();
+    public int evaluate() {
+        int leftVal = left.evaluate();
+        int rightVal = right.evaluate();
         return operator.evaluate(leftVal, rightVal);
     }
 
@@ -61,7 +61,7 @@ public class OperatorNode implements Node {
     public String inOrderWalk() {
         String leftVal = left.inOrderWalk();
         String rightVal = right.inOrderWalk();
-        return "(" + leftVal + " " + operator + " " + rightVal + ")";
+        return "(" + leftVal + " " + operator.getSymbol() + " " + rightVal + ")";
     }
 
     
@@ -73,7 +73,23 @@ public class OperatorNode implements Node {
     public String postOrderWalk() {
         String leftVal = left.postOrderWalk();
         String rightVal = right.postOrderWalk();
-        return leftVal + " " + rightVal + " " + operator;
+        return leftVal + " " + rightVal + " " + operator.getSymbol();
+    }
+    
+    
+    /**
+     * @return Operator - the operator
+     */
+    public Operator getOperator(){
+        return operator;
+    }
+    
+    public Node getLeft() {
+        return left;
+    }
+    
+    public Node getRight() {
+        return right;
     }
 
 }

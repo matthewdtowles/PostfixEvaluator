@@ -10,14 +10,14 @@ package postfixevaluator.node;
  */
 public class OperandNode implements Node {
 
-    private double value;
+    private int value;
     
     
     /**
      * Constructor
      * @param value - data held by node
      */
-    public OperandNode(double value) {
+    public OperandNode(int value) {
         this.value = value;
     }
     
@@ -26,7 +26,7 @@ public class OperandNode implements Node {
      * @return this.value
      */
     @Override
-    public double evaluate() {
+    public int evaluate() {
         return value;
     }
 

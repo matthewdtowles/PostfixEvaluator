@@ -1,7 +1,5 @@
 package postfixevaluator;
 
-import postfixevaluator.operator.AddOperator;
-import postfixevaluator.operator.Operator;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,10 +7,11 @@ import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import postfixevaluator.expression.PostfixExpression;
+import postfixevaluator.expression.ExpressionTree;
 
 /**
  * GUI and main class for Postfix Evaluator
@@ -145,16 +144,21 @@ public class PostfixGUI extends JFrame {
      * @param ev 
      */
     private void submitButtonActionPerformed(ActionEvent ev) {
-        // build tree or whatever happens when you click the button
         String input = inputField.getText();
-        
-        String[] equation = input.split(" ");
-        
-        PostfixExpression pe = new PostfixExpression(equation);
-        
-        String output = pe.toString();
-        
-        this.resultText.setText(output);
+        try {
+            PostfixEvaluator evaluator = new PostfixEvaluator(input);
+            ExpressionTree tree = new ExpressionTree(evaluator.getExpression());
+            this.resultText.setText(tree.getEquation());
+        } catch (RuntimeException ex) {
+            JOptionPane.showMessageDialog(
+                    null, ex.getMessage(), 
+                    "Runtime Exception", JOptionPane.ERROR_MESSAGE
+            );
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(
+                    null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE
+            );
+        }
     }
     
     
@@ -169,8 +173,5 @@ public class PostfixGUI extends JFrame {
                 new PostfixGUI().setVisible(true);
             }
         });
-        
-        Operator add = new AddOperator();
-        System.out.println("prec: " + add.getPrecedence());
     }
 }

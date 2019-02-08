@@ -10,6 +10,8 @@ abstract public class Operator {
     
     /**
      * Precedence Values for each Operator type
+     * Not necessary for Postfix Evaluations
+     * But necessary if eval infix
      */
     public static final int ADD_PRECEDENCE = 1;
     public static final int SUB_PRECEDENCE = 1;
@@ -43,9 +45,9 @@ abstract public class Operator {
      * Evaluates two numbers based on type of operation
      * @param a - first number
      * @param b - second number
-     * @return double - a (operation) b
+     * @return int - a (operation) b
      */
-    abstract public double evaluate(double a, double b);
+    abstract public int evaluate(int a, int b);
     
     
     /**

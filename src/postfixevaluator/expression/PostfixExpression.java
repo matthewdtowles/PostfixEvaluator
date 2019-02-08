@@ -1,5 +1,7 @@
 package postfixevaluator.expression;
 
+import java.util.List;
+
 /**
  * PostfixExpression
  * Definition and model for a postfix equation
@@ -17,11 +19,11 @@ public class PostfixExpression extends Expression {
     
     /**
      * Constructor
-     * Takes a String[] equation as input
+     * Takes a List of strings equation as input
      * Validates the input as formatted correctly
      * @param equation
      */
-    public PostfixExpression(String[] equation) {
+    public PostfixExpression(List<String> equation) {
         validate(equation);
         this.equation = equation;
     }
@@ -33,9 +35,9 @@ public class PostfixExpression extends Expression {
      * and do not set this.equation
      * @param equation 
      */
-    private void validate(String[] equation) {
+    private void validate(List<String> equation) {
         // lets at least catch the obvious invalid formatting
-        if (!isNumeric(equation[0]) || !isNumeric(equation[1])) {
+        if (!isNumeric(equation.get(0)) || !isNumeric(equation.get(1))) {
             throw new RuntimeException("Invalid postfix format.");
         }
         for(String tkn : equation) {
@@ -52,7 +54,6 @@ public class PostfixExpression extends Expression {
      * @param tkn
      * @return boolean
      */
-    @Override
     protected boolean isValid(String tkn) {
         return isOperator(tkn) || isNumeric(tkn);
     }
@@ -75,8 +76,7 @@ public class PostfixExpression extends Expression {
     /**
      * @return this.equation
      */
-    @Override
-    public String[] getEquation() {
+    public List<String> getEquation() {
         return equation;
     }
 }

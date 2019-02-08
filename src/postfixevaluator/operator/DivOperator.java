@@ -28,7 +28,7 @@ public class DivOperator extends Operator {
      * @return - quotient of (a/b) 
      */
     @Override
-    public double evaluate(double a, double b) {
+    public int evaluate(int a, int b) {
         return a / b;
     }
 

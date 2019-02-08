@@ -10,9 +10,9 @@ public interface Node {
     
     /**
      * Evaluates the data node is holding
-     * @return double - data inside of node
+     * @return int - data inside of node
      */
-    public double evaluate();
+    public int evaluate();
       
     
     /**

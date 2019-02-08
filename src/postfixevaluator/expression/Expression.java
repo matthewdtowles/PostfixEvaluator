@@ -1,5 +1,8 @@
 package postfixevaluator.expression;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Expression 
  * Arithmetic expression or equation
@@ -9,9 +12,9 @@ package postfixevaluator.expression;
 abstract public class Expression {
     
     /**
-     *
+     * The actual equation that this represents
      */
-    protected String[] equation;
+    protected List<String> equation = new ArrayList<>();
     
     
     /**
@@ -31,21 +34,5 @@ abstract public class Expression {
      */
     protected boolean isOperator(String tkn) {
         return tkn.matches("^[+*/\\-]*$");
-    }
-    
-    
-    /**
-     * Check if a token is valid for expression
-     * @param tkn
-     * @return boolean
-     */
-    abstract protected boolean isValid(String tkn);
-    
-    
-    /**
-     * Getter - to be implemented by subclasses
-     * @return this.equation 
-     */
-    abstract public String[] getEquation();
-    
+    }    
 }
