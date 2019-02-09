@@ -8,15 +8,11 @@ package postfixevaluator.operator;
  */
 public class MulOperator extends Operator {
 
-    private int precedence;
-    private String symbol;
-
-    
     /**
      * Constructor
      */
     public MulOperator() {
-        this.precedence = MUL_PRECEDENCE;
+        this.name = MUL_NAME;
         this.symbol = MUL_SYMBOL;
     }
     
@@ -31,21 +27,4 @@ public class MulOperator extends Operator {
         return a * b;
     }
 
-    
-    /**
-     * @return precedence value
-     */
-    @Override
-    public int getPrecedence() {
-        return precedence;
-    }
-    
-    
-    /**
-     * @return symbol representation of operator
-     */
-    @Override
-    public String getSymbol() {
-        return symbol;
-    }
 }

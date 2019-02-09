@@ -84,10 +84,18 @@ public class OperatorNode implements Node {
         return operator;
     }
     
+    
+    /**
+     * @return Node - this.left
+     */
     public Node getLeft() {
         return left;
     }
     
+    
+    /**
+     * @return Node - this.right 
+     */
     public Node getRight() {
         return right;
     }

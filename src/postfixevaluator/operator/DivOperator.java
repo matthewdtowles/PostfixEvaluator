@@ -8,15 +8,11 @@ package postfixevaluator.operator;
  */
 public class DivOperator extends Operator {
 
-    private int precedence;
-    private String symbol;
-
-    
     /**
      * Constructor
      */
     public DivOperator() {
-        this.precedence = DIV_PRECEDENCE;
+        this.name = DIV_NAME;
         this.symbol = DIV_SYMBOL;
     }
     
@@ -32,21 +28,4 @@ public class DivOperator extends Operator {
         return a / b;
     }
 
-    
-    /**
-     * @return precedence value
-     */
-    @Override
-    public int getPrecedence() {
-        return precedence;
-    }
-    
-    
-    /**
-     * @return symbol representation of operator
-     */
-    @Override
-    public String getSymbol() {
-        return symbol;
-    }
 }

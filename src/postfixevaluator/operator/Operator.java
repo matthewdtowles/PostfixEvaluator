@@ -13,10 +13,10 @@ abstract public class Operator {
      * Not necessary for Postfix Evaluations
      * But necessary if eval infix
      */
-    public static final int ADD_PRECEDENCE = 1;
-    public static final int SUB_PRECEDENCE = 1;
-    public static final int MUL_PRECEDENCE = 2;
-    public static final int DIV_PRECEDENCE = 2;
+    protected static final String ADD_NAME = "Add";
+    protected static final String SUB_NAME = "Sub";
+    protected static final String MUL_NAME = "Mul";
+    protected static final String DIV_NAME = "Div";
     
     
     /**
@@ -29,16 +29,16 @@ abstract public class Operator {
     
     
     /**
-     * Operators precedence value
-     * Higher value = higher precedence
-     * Lowest precedence value = 1
+     * Math operator's name in string form
+     * e.g.: AddOperator.name = "Add"
      */
-    private int precedence;
+    protected String name;
     
     /**
      * Math symbol of operator
+     * e.g.: MulOperator.symbol = "*"
      */
-    private String symbol;
+    protected String symbol;
    
 
     /**
@@ -51,17 +51,19 @@ abstract public class Operator {
     
     
     /**
-     * Getter for precedence 
-     * Must be implemented by each subclass
+     * Getter operator's name
      * @return int - precedence value for Operator
      */
-    abstract public int getPrecedence();
+    public String getName() {
+        return name;
+    }
     
     
     /**
      * Getter for symbol
-     * Must be implemented by each subclass
      * @return String - symbol of operation
      */
-    abstract public String getSymbol();
+    public String getSymbol() {
+        return symbol;
+    }
 }

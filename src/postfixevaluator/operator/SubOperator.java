@@ -8,15 +8,11 @@ package postfixevaluator.operator;
  */
 public class SubOperator extends Operator {
 
-    private int precedence;
-    private String symbol;
-
-    
     /**
      * Constructor
      */
     public SubOperator() {
-        this.precedence = SUB_PRECEDENCE;
+        this.name = SUB_NAME;
         this.symbol = SUB_SYMBOL;
     }
     
@@ -32,21 +28,4 @@ public class SubOperator extends Operator {
         return a - b;
     }
 
-    
-    /**
-     * @return precedence value
-     */
-    @Override
-    public int getPrecedence() {
-        return precedence;
-    }
-    
-    
-    /**
-     * @return symbol representation of operator
-     */
-    @Override
-    public String getSymbol() {
-        return symbol;
-    }
 }

@@ -6,6 +6,14 @@ import postfixevaluator.expression.PostfixExpression;
 
 /**
  * PostfixEvaluator
+ * Evaluates postfix expression given as raw input
+ * Breaks input into char array
+ * Parses char array and creates a token list
+ * Parses token list to create a well defined
+ * PostfixExpression structure
+ * This is done to ensure a valid PostfixExpression
+ * is handled by the expression tree which
+ * translates it into infix and 3-Address instructions
  * @author matthew.towles
  * @date Feb 5, 2019
  */
@@ -41,7 +49,15 @@ public class PostfixEvaluator {
         tokenize();
         expression = new PostfixExpression(tokens);
     }
-    public PostfixExpression getExpression(){return expression;}
+    
+    
+    /**
+     * Getter
+     * @return PostfixExpression expression
+     */
+    public PostfixExpression getExpression() {
+        return expression;
+    }
     
     
     /**

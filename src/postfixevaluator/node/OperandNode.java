@@ -51,5 +51,4 @@ public class OperandNode implements Node {
     public String postOrderWalk() {
         return String.valueOf(value);
     }
-
 }

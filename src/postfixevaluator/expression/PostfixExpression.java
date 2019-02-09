@@ -12,10 +12,7 @@ import java.util.List;
  * @author matthew.towles
  * @date Feb 5, 2019
  */
-public class PostfixExpression extends Expression {
-    
-//    private String[] equation;
-    
+public class PostfixExpression extends Expression {    
     
     /**
      * Constructor

@@ -1,5 +1,9 @@
 package postfixevaluator.expression;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Stack;
 import postfixevaluator.node.Node;
 import postfixevaluator.node.OperandNode;
@@ -41,10 +45,25 @@ public class ExpressionTree extends Expression {
     
     
     /**
+     * Register number for assembly instructions
+     */
+    private int register;
+    
+    
+    /**
+     * File to output assembly instructions to
+     */
+    private File assemblyFile;
+    
+    
+    /**
      * Constructor - calls the build method
      * @param expression 
+     * @throws java.io.IOException 
      */
-    public ExpressionTree(PostfixExpression expression) {
+    public ExpressionTree(PostfixExpression expression) throws IOException {
+        register = 0;
+        assemblyFile = new File("assembly.txt");
         build(expression);
     }
     
@@ -53,7 +72,7 @@ public class ExpressionTree extends Expression {
      * Builds ExpressionTree from PostfixExpression
      * @param expression 
      */
-    private void build(PostfixExpression expression) {
+    private void build(PostfixExpression expression) throws IOException {
         for (String tkn : expression.getEquation()) {
             if (isNumeric(tkn)) {
                 OperandNode num = new OperandNode(Integer.parseInt(tkn));
@@ -78,16 +97,34 @@ public class ExpressionTree extends Expression {
                                 "Could not evaluate operator: " + tkn
                         );
                 }
-                Node rightNode = tokenStack.pop();
-                Node leftNode = tokenStack.pop();
-                OperatorNode opNode = new OperatorNode(op, leftNode, rightNode);
-                tokenStack.push(opNode);
+                calculate(op);
             } else {
                 throw new RuntimeException("Invalid symbol: " + tkn);
             }
         }
         tree = tokenStack.pop();
         equation = tree.inOrderWalk();
+    }
+    
+    
+    private void calculate(Operator op) throws IOException {
+        Node right = tokenStack.pop();
+        Node left = tokenStack.pop();
+        OperatorNode opNode = new OperatorNode(op, left, right);
+        tokenStack.push(opNode);
+        writeAssembly(op.getName(), left.evaluate(), right.evaluate());
+    }
+    
+    
+    private void writeAssembly(String op, int n1, int n2) throws IOException {
+        String reg = "R" + register;
+        try (BufferedWriter bw = new BufferedWriter(
+                new FileWriter(assemblyFile, true)
+        )) {
+            bw.write(reg + " " + op + " " + n1 + " " + n2);
+            bw.newLine();
+        }
+        register++;
     }
     
     

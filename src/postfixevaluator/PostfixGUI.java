@@ -3,6 +3,7 @@ package postfixevaluator;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -154,9 +155,15 @@ public class PostfixGUI extends JFrame {
                     null, ex.getMessage(), 
                     "Runtime Exception", JOptionPane.ERROR_MESSAGE
             );
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(
+                    null, ex.getMessage(), 
+                    "IO Exception", JOptionPane.ERROR_MESSAGE
+            );
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(
-                    null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE
+                    null, ex.getMessage(), 
+                    "Error", JOptionPane.ERROR_MESSAGE
             );
         }
     }
